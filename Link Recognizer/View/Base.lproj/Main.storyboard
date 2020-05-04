@@ -180,6 +180,7 @@
                     </view>
                     <connections>
                         <outlet property="bottomView" destination="mz5-Tf-v8v" id="Nqi-KF-jL6"/>
+                        <outlet property="cameraBtn" destination="bgj-x0-BTb" id="1kS-Ei-TrD"/>
                         <outlet property="cameraView" destination="30O-6g-vCc" id="Jfb-XI-muK"/>
                         <outlet property="cameraViewHight" destination="F1l-dw-ihc" id="rZy-OW-YqF"/>
                         <outlet property="hintTextLabel" destination="nEm-DQ-5fZ" id="NLg-8a-xpO"/>

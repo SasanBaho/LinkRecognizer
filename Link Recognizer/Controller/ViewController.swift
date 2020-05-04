@@ -26,6 +26,7 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, WKNavigat
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var hintTextLabel: UILabel!
+    @IBOutlet weak var cameraBtn: UIButton!
     
     let camera = Camera()
     let cropImage = CropImage()
@@ -121,7 +122,6 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, WKNavigat
             let bookmarkedUrl = data["urlKey"]!
             webView.load(URLRequest(url: URL(string: bookmarkedUrl)!))
         }
-        
     }
     
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
@@ -212,20 +212,23 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, WKNavigat
         
     }
     
+    func capturePhoto() {
+        let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
+        camera.capturePhotoOutput!.capturePhoto(with: settings, delegate: self)
+    }
+    
     @IBAction func capturePhoto(_ sender: UIButton) {
         if cameraAuthorized {
             if isCameraViewOpen {
-                let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
-                camera.capturePhotoOutput!.capturePhoto(with: settings, delegate: self)
+                capturePhoto()
             }else{
                 openCameraView()
             }
         }else {
             alertCameraAccessNeeded()
-            
         }
-        
     }
+    
     
     @IBAction func backwardBtn(_ sender: UIButton) {
         if webView.canGoBack {
@@ -253,7 +256,7 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, WKNavigat
     }
     
     @IBAction func bookmarkBtn(_ sender: UIButton) {
-        
+        closeCameraView()
     }
     @IBAction func openCameraViewButton(_ sender: UIButton) {
         cameraViewAnimation()
@@ -269,6 +272,7 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, WKNavigat
 
     func removeSpinner() {
         spinner.removeSpinner()
+        cameraBtn.setBackgroundImage(UIImage(systemName: "camera"), for: .normal)
     }
     
     // this handles target=_blank links by opening them in the same view
@@ -280,7 +284,7 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, WKNavigat
     }
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        //removeSpinner()
+        spinner.showSpinner(onView: cameraBtn)
 
     }
     func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
@@ -291,11 +295,11 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, WKNavigat
                 self.searchBar.text = webView.url?.absoluteString
             }
         }
-        removeSpinner()
+        //removeSpinner()
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        //removeSpinner()
+        removeSpinner()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -321,8 +325,8 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, WKNavigat
     }
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.text = webView.url?.absoluteString
-        searchBar.searchTextField.selectAll(self)
-        //self.searchBar.selectAll(self)
+        self.searchBar.searchTextField.selectAll(self)
+        removeSpinner()
     }
     
 }
