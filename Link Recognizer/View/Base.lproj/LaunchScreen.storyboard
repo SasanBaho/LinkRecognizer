@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,59 +15,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sV3-LH-Ehh">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="157"/>
-                                <color key="backgroundColor" red="0.97988003489999997" green="0.63831692929999995" blue="0.1235022917" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="qpm-n4-bBf">
+                                <rect key="frame" x="118.5" y="360" width="177" height="176"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="157" id="Izv-HK-Bf5"/>
+                                    <constraint firstAttribute="height" constant="176" id="bK1-fK-BcD"/>
+                                    <constraint firstAttribute="width" constant="177" id="vwa-Aw-QsD"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LINK RECOGNIZER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="124-gk-veO">
-                                <rect key="frame" x="0.0" y="158" width="414" height="57"/>
-                                <color key="backgroundColor" red="0.066975764052711773" green="0.11403406579645507" blue="0.34728241784822333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="57" id="REr-ux-xvP"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="20"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gtx-dT-ecX">
-                                <rect key="frame" x="0.0" y="216" width="414" height="486"/>
-                                <color key="backgroundColor" red="0.001952210325" green="0.31762671469999998" blue="0.50869500639999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DfU-IK-V61">
-                                <rect key="frame" x="0.0" y="703" width="414" height="193"/>
-                                <color key="backgroundColor" red="0.0026827433609999999" green="0.65721464159999998" blue="0.79959374670000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="193" id="rQd-9v-1BH"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Link Recognizer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Syz-Js-nj0">
+                                <rect key="frame" x="148.5" y="544" width="117" height="27"/>
+                                <fontDescription key="fontDescription" name="MyanmarSangamMN" family="Myanmar Sangam MN" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="Gtx-dT-ecX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="3jd-5A-gAE"/>
-                            <constraint firstItem="124-gk-veO" firstAttribute="top" secondItem="sV3-LH-Ehh" secondAttribute="bottom" constant="1" id="8S6-Ip-R62"/>
-                            <constraint firstAttribute="bottom" secondItem="DfU-IK-V61" secondAttribute="bottom" id="9EM-dH-dya"/>
-                            <constraint firstItem="Gtx-dT-ecX" firstAttribute="top" secondItem="124-gk-veO" secondAttribute="bottom" constant="1" id="DHm-Yt-9V7"/>
-                            <constraint firstItem="sV3-LH-Ehh" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="GNo-ha-YSY"/>
-                            <constraint firstItem="DfU-IK-V61" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="L63-x6-cJK"/>
-                            <constraint firstItem="124-gk-veO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="W53-ms-H0d"/>
-                            <constraint firstItem="sV3-LH-Ehh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Ygf-7J-bJa"/>
-                            <constraint firstItem="DfU-IK-V61" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="bJG-SU-k6d"/>
-                            <constraint firstItem="DfU-IK-V61" firstAttribute="top" secondItem="Gtx-dT-ecX" secondAttribute="bottom" constant="1" id="ejt-yD-wK0"/>
-                            <constraint firstItem="Gtx-dT-ecX" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="nyD-m2-XVO"/>
-                            <constraint firstItem="sV3-LH-Ehh" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="s6a-fn-soJ"/>
-                            <constraint firstItem="124-gk-veO" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="wjv-Lz-Q9F"/>
+                            <constraint firstItem="qpm-n4-bBf" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="3k0-XO-wQr"/>
+                            <constraint firstItem="Syz-Js-nj0" firstAttribute="top" secondItem="qpm-n4-bBf" secondAttribute="bottom" constant="8" id="GVb-3K-Tfs"/>
+                            <constraint firstItem="qpm-n4-bBf" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="k5D-h8-7nq"/>
+                            <constraint firstItem="Syz-Js-nj0" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="u63-Gq-y0w"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -77,4 +44,7 @@
             <point key="canvasLocation" x="52.173913043478265" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Logo" width="1024" height="1024"/>
+    </resources>
 </document>

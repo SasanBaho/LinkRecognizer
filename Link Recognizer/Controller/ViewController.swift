@@ -12,7 +12,11 @@ import AVFoundation
 import FirebaseMLVision
 import Firebase
 
-class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, WKNavigationDelegate, WKUIDelegate, UISearchBarDelegate {
+protocol FrameExtractorDelegate: class {
+    func captured(image: UIImage)
+}
+
+class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, WKNavigationDelegate, WKUIDelegate, UISearchBarDelegate, AVCaptureVideoDataOutputSampleBufferDelegate  {
     
     let vision = Vision.vision()
     var textRecognizer: VisionTextRecognizer!
@@ -35,6 +39,7 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, WKNavigat
     var isBookmarkOpen = false
     var isCameraViewOpen = true
     var cameraAuthorized = false
+    weak var delegate: FrameExtractorDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,13 +58,14 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, WKNavigat
         webView.uiDelegate = self
         searchBar.delegate = self
         hideHint()
+        searchBar.searchTextField.textAlignment = .center
         searchBar.placeholder = k.firstLoadText
+        searchBar.searchTextField.font = UIFont(name: "Arial", size: 13)
     }
     
     func hideHint(){
         hintTextLabel.layer.zPosition = 100
         hintTextLabel.textColor = .white
-
         Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { timer in
             UIView.animate(withDuration: 1.0, delay: 0, options: UIView.AnimationOptions.curveEaseIn, animations: {
                 self.hintTextLabel.alpha = 0
@@ -124,16 +130,7 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, WKNavigat
         }
     }
     
-    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
-            guard let imageData = photo.fileDataRepresentation()
-                   else { return }
-           if let image = UIImage(data: imageData){
-               let newImage = cropImage.scaleAndCropImage(image, toSize: cameraView.frame.size)
-               runTextRecognition(with: newImage)
-           }
-    }
-    
-    //put image to UIKit
+    //put image to MLKit
     func runTextRecognition(with image: UIImage){
         textRecognizer = vision.onDeviceTextRecognizer()
 
@@ -149,25 +146,28 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, WKNavigat
     
     //Start to translate image to text
     func processResult(from text: VisionText?, error: Error?) {
+        var newUrl = ""
         if let features = text {
             for block in features.blocks {
                 for line in block.lines {
                     for element in line.elements {
-                        let newUrl = urlRecognizer.findUrl(from: element.text.lowercased())
-                        if newUrl != "" && newUrl.isValidURL{
-                            openUrl(urlString : newUrl)
-                        }else {
-                            searchBar.text = " "
-                            removeSpinner()
+                        if urlRecognizer.findUrl(from: element.text.lowercased()) != "" {
+                            newUrl = urlRecognizer.findUrl(from: element.text.lowercased())
                         }
                     }
                 }
             }
-        }
-        if text == nil{
-           searchBar.text = k.cantFindText
+           if newUrl.isValidURL || newUrl != "" {
+               openUrl(urlString : newUrl)
+           }else {
+               searchBar.text = k.cantFindText
+               removeSpinner()
+           }
+        }else {
+            searchBar.text = k.cantFindText
             removeSpinner()
         }
+        
     }
     
     func openUrl(urlString : String){
@@ -192,6 +192,15 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, WKNavigat
         }else{
             searchBar.text = k.cantFindText
         }
+    }
+    
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+            guard let imageData = photo.fileDataRepresentation()
+                   else { return }
+           if let image = UIImage(data: imageData){
+               let newImage = cropImage.scaleAndCropImage(image, toSize: cameraView.frame.size)
+               runTextRecognition(with: newImage)
+           }
     }
     
     func alertCameraAccessNeeded() {
@@ -301,10 +310,6 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate, WKNavigat
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         removeSpinner()
     }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-         openCameraView()
-     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         closeCameraView()

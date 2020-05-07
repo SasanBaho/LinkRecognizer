@@ -24,7 +24,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="30"/>
                                         <subviews>
                                             <searchBar contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="60N-VA-uNB">
-                                                <rect key="frame" x="-9" y="0.0" width="393" height="30"/>
+                                                <rect key="frame" x="-9" y="0.0" width="398" height="30"/>
                                                 <color key="backgroundColor" name="my-gray"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="URL"/>
                                                 <scopeButtonTitles>
@@ -33,13 +33,15 @@
                                                 </scopeButtonTitles>
                                             </searchBar>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bgj-x0-BTb">
-                                                <rect key="frame" x="375" y="0.5" width="35" height="28"/>
+                                                <rect key="frame" x="380" y="3" width="30" height="23"/>
                                                 <color key="backgroundColor" name="my-gray"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="NtX-vP-B9J"/>
-                                                    <constraint firstAttribute="width" constant="35" id="zC5-9W-Jah"/>
+                                                    <constraint firstAttribute="height" constant="25" id="NtX-vP-B9J"/>
+                                                    <constraint firstAttribute="width" constant="30" id="zC5-9W-Jah"/>
                                                 </constraints>
-                                                <state key="normal" backgroundImage="camera" catalog="system"/>
+                                                <state key="normal" backgroundImage="camera" catalog="system">
+                                                    <color key="titleShadowColor" name="my-gray"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="openCameraViewButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PeW-me-Rtd"/>
                                                 </connections>
@@ -155,8 +157,8 @@
                                     <constraint firstItem="mz5-Tf-v8v" firstAttribute="leading" secondItem="CG7-Qt-zfO" secondAttribute="leading" id="RL6-h1-hOf"/>
                                 </constraints>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[ Take  picture of a website link! ]" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nEm-DQ-5fZ">
-                                <rect key="frame" x="85" y="84" width="244" height="46"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[  Take picture of a website link!  ]" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nEm-DQ-5fZ">
+                                <rect key="frame" x="83" y="84" width="248" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="vHk-6j-4lC"/>
                                 </constraints>

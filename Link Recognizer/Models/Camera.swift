@@ -10,7 +10,7 @@ import Foundation
 import AVFoundation
 import UIKit
 
-class Camera {
+class Camera{
     
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     var captureSession: AVCaptureSession!
@@ -57,10 +57,11 @@ class Camera {
           
         })
     }
-
     
     
 }
+
+
 
 extension AVCaptureDevice {
     enum AuthorizationStatus {
@@ -100,3 +101,4 @@ extension AVCaptureDevice {
         }
     }
 }
+
